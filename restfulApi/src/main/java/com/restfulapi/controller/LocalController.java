@@ -27,6 +27,7 @@ public class LocalController {
         this.greetingController = greetingController;
     }
     
+    
     @GetMapping("/findByName/{name}")
     Optional<Local> findByName(@PathVariable String name){
     	return localService.findByName(name);
@@ -37,6 +38,11 @@ public class LocalController {
     	return localService.findLocalByNameWithJPQL(name);
     }
 
+    @GetMapping("/findByNameIgnoreCase/{name}")
+    Optional<Local> findByNameIgnoreCase(@PathVariable String name){
+    	return localService.findByNameIgnoreCase(name);
+    }
+    
 	@GetMapping("/findAllLocals")
 	public List<Local> findAllLocals() {
 		return localService.findAllLocals();

@@ -64,4 +64,10 @@ public class LocalServiceImpl implements ILocalService{
 	public Optional<Local> findByName(String name) {
 		return localRepository.findByName(name);
 	}
+
+	@Override
+	public Optional<Local> findByNameIgnoreCase(String name) {
+		
+		return localRepository.findByNameIgnoreCase(name);
+	}
 }

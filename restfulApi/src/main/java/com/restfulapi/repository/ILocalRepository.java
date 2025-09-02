@@ -17,4 +17,7 @@ public interface ILocalRepository extends JpaRepository<Local, Long>{
 	
 	//Consulta con inversion de Control
 	Optional<Local> findByName(String name);
+	
+	//Consulta para encontrar ignorando mayusculas o minusculas
+	Optional<Local>findByNameIgnoreCase(String name);
 }

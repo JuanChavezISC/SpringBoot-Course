@@ -13,4 +13,5 @@ public interface ILocalService {
 	void deleteLocal(Long id);
 	Optional<Local> findLocalByNameWithJPQL(String name);
 	Optional<Local> findByName(String name);
+	Optional<Local> findByNameIgnoreCase(String name);
 }
