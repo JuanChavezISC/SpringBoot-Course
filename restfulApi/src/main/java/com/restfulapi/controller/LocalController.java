@@ -13,20 +13,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.restfulapi.entity.Local;
+import com.restfulapi.error.LocalNotFoundException;
 import com.restfulapi.service.ILocalService;
 
 @RestController
 public class LocalController {
 
-    private final GreetingController greetingController;
 	
 	@Autowired
 	ILocalService localService;
 
-    LocalController(GreetingController greetingController) {
-        this.greetingController = greetingController;
-    }
     
+    @GetMapping("/findLocalById/{id}")
+    Local findLocalById(@PathVariable Long id) throws LocalNotFoundException{
+    	return localService.findLocalById(id);
+    }
     
     @GetMapping("/findByName/{name}")
     Optional<Local> findByName(@PathVariable String name){

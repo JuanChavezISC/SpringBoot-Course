@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.restfulapi.entity.Local;
+import com.restfulapi.error.LocalNotFoundException;
 import com.restfulapi.repository.ILocalRepository;
 
 @Service
@@ -69,5 +70,15 @@ public class LocalServiceImpl implements ILocalService{
 	public Optional<Local> findByNameIgnoreCase(String name) {
 		
 		return localRepository.findByNameIgnoreCase(name);
+	}
+
+	@Override
+	public Local findLocalById(Long id) throws LocalNotFoundException{
+		// Busca en base de datos
+		Optional<Local> local= localRepository.findById(id);
+		if (!local.isPresent()) {
+			throw new LocalNotFoundException("Local is not available");
+		}
+		return local.get();
 	}
 }
