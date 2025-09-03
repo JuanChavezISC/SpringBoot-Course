@@ -16,6 +16,8 @@ import com.restfulapi.entity.Local;
 import com.restfulapi.error.LocalNotFoundException;
 import com.restfulapi.service.ILocalService;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class LocalController {
 
@@ -50,7 +52,7 @@ public class LocalController {
 	}
 	
 	@PostMapping("/saveLocal")
-	public Local saveLocal(@RequestBody Local local) {
+	public Local saveLocal(@Valid @RequestBody Local local) {
 		return localService.saveLocal(local);
 	}
 	
